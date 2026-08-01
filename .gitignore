@@ -1,0 +1,4 @@
+flood_model.keras
+__pycache__/
+*.pyc
+static/uploads/*

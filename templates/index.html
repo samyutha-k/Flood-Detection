@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Flood Detection using Satellite Images</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌊 Flood Detection and Mapping using Satellite Images</h1>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+
+        <input type="file" name="image" required>
+
+        <br><br>
+        <button type="submit">
+            Detect Flood
+        </button>
+
+    </form>
+
+    {% if original %}
+
+    <div class="row">
+
+        <div class="card">
+
+            <h3>Original Image</h3>
+
+            <img src="{{ url_for('static', filename=original) }}">
+
+        </div>
+
+        <div class="card">
+
+            <h3>Prediction Mask</h3>
+
+            <img src="{{ url_for('static', filename=mask) }}">
+
+        </div>
+
+        <div class="card">
+
+            <h3>Flood Overlay</h3>
+
+            <img src="{{ url_for('static', filename=overlay) }}">
+
+        </div>
+
+    </div>
+
+    <div class="result">
+
+        <h2>Flood Area : {{ flood }} %</h2>
+
+        <h2>Risk Level : {{ risk }}</h2>
+
+        <h2>Damage : {{ damage }}</h2>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>
